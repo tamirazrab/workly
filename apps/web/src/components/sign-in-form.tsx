@@ -7,6 +7,11 @@ import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import { useRouter } from "next/navigation";
+import { CardContent } from "./ui/card";
+
+import { FcGoogle } from "react-icons/fc";
+import { FaGithub } from "react-icons/fa";
+import { DottedSeparator } from "./dotted-seperator";
 
 export default function SignInForm({
   onSwitchToSignUp,
@@ -41,7 +46,7 @@ export default function SignInForm({
     validators: {
       onSubmit: z.object({
         email: z.email("Invalid email address"),
-        password: z.string().min(8, "Password must be at least 8 characters"),
+        password: z.string().min(1, "Password is required"),
       }),
     },
   });
@@ -121,9 +126,34 @@ export default function SignInForm({
         </form.Subscribe>
       </form>
 
+      <CardContent className="p-7 flex flex-col gap-y-4">
+        <Button
+          onClick={() => {}}
+          disabled={isPending}
+          variant="secondary"
+          size="lg"
+          className="w-full"
+        >
+          <FcGoogle className="mr-2 size-5" />
+          Login with Google
+        </Button>
+        <Button 
+          onClick={() => {}}
+          disabled={isPending}
+          variant="secondary"
+          size="lg"
+          className="w-full"
+        >
+          <FaGithub className="mr-2 size-5" />
+          Login with Github
+        </Button>
+      </CardContent>
+      <div className="px-7">
+        <DottedSeparator />
+      </div>
+
       <div className="mt-4 text-center">
         <Button
-          variant="link"
           onClick={onSwitchToSignUp}
           className="text-indigo-600 hover:text-indigo-800"
         >
